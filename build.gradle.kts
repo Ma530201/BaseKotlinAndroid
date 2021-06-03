@@ -25,9 +25,11 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    jcenter()
 }
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.1")
+    compileOnly(files("lib/wizard-template.jar"))
 }
 
 // Configure gradle-intellij-plugin plugin.
@@ -111,4 +113,5 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
+
 }
